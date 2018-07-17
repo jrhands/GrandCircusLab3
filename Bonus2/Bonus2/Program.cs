@@ -174,9 +174,7 @@ namespace Bonus2
 
         static int[] CalcAge(DateTime birthday)
         {
-            DateTime today = DateTime.Today;
-
-            int days = today.Subtract(birthday).Duration().Days - CalcLeapYears(birthday);
+            int days = DateTime.Today.Subtract(birthday).Duration().Days - CalcLeapYears(birthday);
             int years = days / 365;
             days %= 365;
             return new int[] { years, days };
