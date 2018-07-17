@@ -6,7 +6,7 @@ namespace Bonus2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the age calculator!\n");
+            Console.WriteLine("Welcome to the age calculator!");
             bool repeat = true;
             while (repeat)
             {
@@ -23,7 +23,7 @@ namespace Bonus2
 
         static DateTime RequestBirthday()
         {
-            Console.WriteLine("What is your birthday?\n");
+            Console.WriteLine("\nWhat is your birthday?\n");
             bool validBDay = true;
             int year = 0, month = 0, day = 0;
             const int JAN = 1, FEB = 2, MAR = 3, APR = 4, MAY = 5, JUN = 6, JUL = 7, AUG = 8,
@@ -216,20 +216,22 @@ namespace Bonus2
 
         static bool RequestRepeat()
         {
-            Console.WriteLine("Continue? (y/n): ");
-            String input = Console.ReadLine().ToLower();
-            if (input == "y" || input == "yes")
+            while (true)
             {
-                return true;
-            }
-            else if (input == "n" || input == "no")
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine($"{input} is not a valid response.");
-                return RequestRepeat();
+                Console.WriteLine("Continue? (y/n): ");
+                String input = Console.ReadLine().ToLower();
+                if (input == "y" || input == "yes")
+                {
+                    return true;
+                }
+                else if (input == "n" || input == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine($"{input} is not a valid response.");
+                }
             }
         }
     }
