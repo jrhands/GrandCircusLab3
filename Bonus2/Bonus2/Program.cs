@@ -25,6 +25,7 @@ namespace Bonus2
         {
             Console.WriteLine("\nWhat is your birthday?\n");
             bool validBDay = true;
+            DateTime today = DateTime.Today;
             int year = 0, month = 0, day = 0;
             const int JAN = 1, FEB = 2, MAR = 3, APR = 4, MAY = 5, JUN = 6, JUL = 7, AUG = 8,
                 SEPT = 9, OCT = 10, NOV = 11, DEC = 12;
@@ -33,7 +34,7 @@ namespace Bonus2
             {
                 Console.Write("Year: ");
                 input = Console.ReadLine();
-                if (Int32.TryParse(input, out year) && year >= 0)
+                if (Int32.TryParse(input, out year) && year >= 0 && year <= today.Year)
                 {
                     validBDay = true;
                 }
@@ -120,6 +121,11 @@ namespace Bonus2
                             break;
                     }
                 }
+                if (year == today.Year && month > today.Month && validBDay == true)
+                {
+                    Console.WriteLine($"For the year selected, that month is in the future!");
+                    validBDay = false;
+                }
             } while (!validBDay);
             do
             {
@@ -167,6 +173,11 @@ namespace Bonus2
                             validBDay = false;
                         }
                         break;
+                }
+                if (year == today.Year && month == today.Month && day > today.Day && validBDay == true)
+                {
+                    Console.WriteLine($"For the year and month selected, that day is in the future!");
+                    validBDay = false;
                 }
             } while (!validBDay);
             return new DateTime(year, month, day);
