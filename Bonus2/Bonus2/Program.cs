@@ -7,21 +7,19 @@ namespace Bonus2
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the age calculator!");
-            bool repeat = true;
-            while (repeat)
+            do
             {
-                DateTime birthday = RequestBirthday();
-                int[] age = CalcAge(birthday);
-                int years = age[0], days = age[1];
-                PrintAge(years, days);
-                repeat = RequestRepeat();
-            }
+                int[] age = CalcAge(GetBirthday());
+                //Age is a size 2 array.
+                //The first value is years, the second value is days.
+                PrintAge(age[0], age[1]);
+            } while (ShouldRepeat());
 
             Console.WriteLine("\nGoodbye!");
             Console.Read();
         }
 
-        static DateTime RequestBirthday()
+        static DateTime GetBirthday()
         {
             Console.WriteLine("\nWhat is your birthday?\n");
             bool validBDay = true;
@@ -48,7 +46,7 @@ namespace Bonus2
             {
                 Console.Write("Month: ");
                 input = Console.ReadLine();
-                if (Int32.TryParse(input, out month) && month >= 1 && month <= 12)
+                if (Int32.TryParse(input, out month) && month >= JAN && month <= DEC)
                 {
                     validBDay = true;
                 }
@@ -225,7 +223,7 @@ namespace Bonus2
             }
         }
 
-        static bool RequestRepeat()
+        static bool ShouldRepeat()
         {
             while (true)
             {
